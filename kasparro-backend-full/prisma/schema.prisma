@@ -1,0 +1,18 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Coin {
+  id           Int      @id @default(autoincrement())
+  name         String
+  symbol       String
+  canonicalKey String   @unique
+  meta         Json
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
